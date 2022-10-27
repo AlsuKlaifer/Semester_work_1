@@ -1,0 +1,60 @@
+/Users/alsufaizova/Projects/HttpServer/HttpServer/bin/Debug/net6.0/HttpServer
+/Users/alsufaizova/Projects/HttpServer/HttpServer/bin/Debug/net6.0/HttpServer.deps.json
+/Users/alsufaizova/Projects/HttpServer/HttpServer/bin/Debug/net6.0/HttpServer.runtimeconfig.json
+/Users/alsufaizova/Projects/HttpServer/HttpServer/bin/Debug/net6.0/HttpServer.dll
+/Users/alsufaizova/Projects/HttpServer/HttpServer/bin/Debug/net6.0/HttpServer.pdb
+/Users/alsufaizova/Projects/HttpServer/HttpServer/obj/Debug/net6.0/Server.csproj.AssemblyReference.cache
+/Users/alsufaizova/Projects/HttpServer/HttpServer/obj/Debug/net6.0/Server.GeneratedMSBuildEditorConfig.editorconfig
+/Users/alsufaizova/Projects/HttpServer/HttpServer/obj/Debug/net6.0/Server.AssemblyInfoInputs.cache
+/Users/alsufaizova/Projects/HttpServer/HttpServer/obj/Debug/net6.0/Server.AssemblyInfo.cs
+/Users/alsufaizova/Projects/HttpServer/HttpServer/obj/Debug/net6.0/Server.csproj.CoreCompileInputs.cache
+/Users/alsufaizova/Projects/HttpServer/HttpServer/obj/Debug/net6.0/HttpServer.dll
+/Users/alsufaizova/Projects/HttpServer/HttpServer/obj/Debug/net6.0/refint/HttpServer.dll
+/Users/alsufaizova/Projects/HttpServer/HttpServer/obj/Debug/net6.0/HttpServer.pdb
+/Users/alsufaizova/Projects/HttpServer/HttpServer/obj/Debug/net6.0/Server.genruntimeconfig.cache
+/Users/alsufaizova/Projects/HttpServer/HttpServer/obj/Debug/net6.0/ref/HttpServer.dll
+/Users/alsufaizova/Projects/HttpServer/HttpServer/HttpServer/obj/Debug/net6.0/Server.csproj.AssemblyReference.cache
+/Users/alsufaizova/Projects/HttpServer/HttpServer/HttpServer/obj/Debug/net6.0/Server.GeneratedMSBuildEditorConfig.editorconfig
+/Users/alsufaizova/Projects/HttpServer/HttpServer/HttpServer/obj/Debug/net6.0/Server.AssemblyInfoInputs.cache
+/Users/alsufaizova/Projects/HttpServer/HttpServer/HttpServer/obj/Debug/net6.0/Server.AssemblyInfo.cs
+/Users/alsufaizova/Projects/HttpServer/HttpServer/HttpServer/obj/Debug/net6.0/Server.csproj.CoreCompileInputs.cache
+/Users/alsufaizova/Projects/HttpServer/HttpServer/HttpServer/obj/Debug/net6.0/HttpServer.dll
+/Users/alsufaizova/Projects/HttpServer/HttpServer/HttpServer/obj/Debug/net6.0/refint/HttpServer.dll
+/Users/alsufaizova/Projects/HttpServer/HttpServer/HttpServer/obj/Debug/net6.0/HttpServer.pdb
+/Users/alsufaizova/Projects/HttpServer/HttpServer/HttpServer/bin/Debug/net6.0/HttpServer
+/Users/alsufaizova/Projects/HttpServer/HttpServer/HttpServer/bin/Debug/net6.0/HttpServer.deps.json
+/Users/alsufaizova/Projects/HttpServer/HttpServer/HttpServer/bin/Debug/net6.0/HttpServer.runtimeconfig.json
+/Users/alsufaizova/Projects/HttpServer/HttpServer/HttpServer/bin/Debug/net6.0/HttpServer.dll
+/Users/alsufaizova/Projects/HttpServer/HttpServer/HttpServer/bin/Debug/net6.0/HttpServer.pdb
+/Users/alsufaizova/Projects/HttpServer/HttpServer/HttpServer/obj/Debug/net6.0/Server.genruntimeconfig.cache
+/Users/alsufaizova/Projects/HttpServer/HttpServer/HttpServer/obj/Debug/net6.0/ref/HttpServer.dll
+/Users/alsufaizova/Documents/GitHub/ORIS_3sem/week 7/HttpServer/bin/Debug/net6.0/HttpServer
+/Users/alsufaizova/Documents/GitHub/ORIS_3sem/week 7/HttpServer/bin/Debug/net6.0/HttpServer.deps.json
+/Users/alsufaizova/Documents/GitHub/ORIS_3sem/week 7/HttpServer/bin/Debug/net6.0/HttpServer.runtimeconfig.json
+/Users/alsufaizova/Documents/GitHub/ORIS_3sem/week 7/HttpServer/bin/Debug/net6.0/HttpServer.dll
+/Users/alsufaizova/Documents/GitHub/ORIS_3sem/week 7/HttpServer/bin/Debug/net6.0/HttpServer.pdb
+/Users/alsufaizova/Documents/GitHub/ORIS_3sem/week 7/HttpServer/obj/Debug/net6.0/Server.csproj.AssemblyReference.cache
+/Users/alsufaizova/Documents/GitHub/ORIS_3sem/week 7/HttpServer/obj/Debug/net6.0/Server.GeneratedMSBuildEditorConfig.editorconfig
+/Users/alsufaizova/Documents/GitHub/ORIS_3sem/week 7/HttpServer/obj/Debug/net6.0/Server.AssemblyInfoInputs.cache
+/Users/alsufaizova/Documents/GitHub/ORIS_3sem/week 7/HttpServer/obj/Debug/net6.0/Server.AssemblyInfo.cs
+/Users/alsufaizova/Documents/GitHub/ORIS_3sem/week 7/HttpServer/obj/Debug/net6.0/Server.csproj.CoreCompileInputs.cache
+/Users/alsufaizova/Documents/GitHub/ORIS_3sem/week 7/HttpServer/obj/Debug/net6.0/HttpServer.dll
+/Users/alsufaizova/Documents/GitHub/ORIS_3sem/week 7/HttpServer/obj/Debug/net6.0/refint/HttpServer.dll
+/Users/alsufaizova/Documents/GitHub/ORIS_3sem/week 7/HttpServer/obj/Debug/net6.0/HttpServer.pdb
+/Users/alsufaizova/Documents/GitHub/ORIS_3sem/week 7/HttpServer/obj/Debug/net6.0/Server.genruntimeconfig.cache
+/Users/alsufaizova/Documents/GitHub/ORIS_3sem/week 7/HttpServer/obj/Debug/net6.0/ref/HttpServer.dll
+/Users/alsufaizova/Projects/Server/HttpServer/bin/Debug/net6.0/HttpServer
+/Users/alsufaizova/Projects/Server/HttpServer/bin/Debug/net6.0/HttpServer.deps.json
+/Users/alsufaizova/Projects/Server/HttpServer/bin/Debug/net6.0/HttpServer.runtimeconfig.json
+/Users/alsufaizova/Projects/Server/HttpServer/bin/Debug/net6.0/HttpServer.dll
+/Users/alsufaizova/Projects/Server/HttpServer/bin/Debug/net6.0/HttpServer.pdb
+/Users/alsufaizova/Projects/Server/HttpServer/obj/Debug/net6.0/Server.csproj.AssemblyReference.cache
+/Users/alsufaizova/Projects/Server/HttpServer/obj/Debug/net6.0/Server.GeneratedMSBuildEditorConfig.editorconfig
+/Users/alsufaizova/Projects/Server/HttpServer/obj/Debug/net6.0/Server.AssemblyInfoInputs.cache
+/Users/alsufaizova/Projects/Server/HttpServer/obj/Debug/net6.0/Server.AssemblyInfo.cs
+/Users/alsufaizova/Projects/Server/HttpServer/obj/Debug/net6.0/Server.csproj.CoreCompileInputs.cache
+/Users/alsufaizova/Projects/Server/HttpServer/obj/Debug/net6.0/HttpServer.dll
+/Users/alsufaizova/Projects/Server/HttpServer/obj/Debug/net6.0/refint/HttpServer.dll
+/Users/alsufaizova/Projects/Server/HttpServer/obj/Debug/net6.0/HttpServer.pdb
+/Users/alsufaizova/Projects/Server/HttpServer/obj/Debug/net6.0/Server.genruntimeconfig.cache
+/Users/alsufaizova/Projects/Server/HttpServer/obj/Debug/net6.0/ref/HttpServer.dll
