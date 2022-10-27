@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/alsufaizova/Projects/Server/HttpServer/Server.csproj",
+      "projectUniqueName": "/Users/alsufaizova/Documents/GitHub/Semester_work_1/HttpServer/Server.csproj",
       "projectName": "HttpServer",
-      "projectPath": "/Users/alsufaizova/Projects/Server/HttpServer/Server.csproj",
+      "projectPath": "/Users/alsufaizova/Documents/GitHub/Semester_work_1/HttpServer/Server.csproj",
       "packagesPath": "/Users/alsufaizova/.nuget/packages/",
-      "outputPath": "/Users/alsufaizova/Projects/Server/HttpServer/obj/",
+      "outputPath": "/Users/alsufaizova/Documents/GitHub/Semester_work_1/HttpServer/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/alsufaizova/.nuget/NuGet/NuGet.Config"

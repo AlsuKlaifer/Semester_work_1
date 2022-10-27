@@ -15,6 +15,7 @@ namespace Server
             Path = path;
         }
 
+        //сериализация
         public void Serialize()
         {
             var options = new JsonSerializerOptions { WriteIndented = true };
