@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/header.css">
+    <link rel="stylesheet" href="styles/profile.css">
+    <title>Profile</title>
+</head>
+<body>
+    <header>
+        <div id="about">
+            <a href="runway.html" title="Fashion">Fashion</a>
+            <a href="beauty.html" title="Beauty">Beauty</a>
+            <a href="outfits.html" title="Outfits">Outfits</a>
+            <a href="designers.html" title="Designers">Designers</a>
+        </div>
+        <div id="logo">
+            <a href="index.html">ARIZONA</a>
+        </div>
+        <div id="profile" {{ isNotAuth }}>
+            <a href="profile.html" class="profile-img">Prof</a>
+        </div>
+    </header>
+    <main>
+        <div class="section">
+            <div class="containrer">
+                <div>
+                    <img src="images/profile.png" alt="" class="image">
+                </div>
+                <div id="information">
+                    
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script>
+    $.get("/users/getUser", function(data, status){
+        $('#information').after(data);
+    });
+</script>
+</body>

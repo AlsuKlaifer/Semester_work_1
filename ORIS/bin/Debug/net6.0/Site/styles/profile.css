@@ -1,0 +1,67 @@
+.section{
+    background-image: url(../images/designers.jpg);
+    opacity: 0.6;
+    background-repeat: no-repeat;
+    margin: 0 auto;
+    width: 100%;
+    background-size: 100%;
+    margin-top: 80px;
+    height: -webkit-fill-available;
+}
+.containrer{
+    margin: 0 auto;
+    width: 700px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    height: 390px;
+    font-family: 'Playfair Display', serif;
+    background-color: rgb(67 67 67 / 66%);
+    display: flex;
+    align-items: center;
+}
+#information{
+    font-size: 30px;
+    color: rgb(242, 242, 242);
+}
+.title{
+    margin: 10px;
+    margin-left: 30px;
+    font-size: 20px;
+    color: white;
+    display: list-item;
+}
+.image{
+    width: 250px;
+    margin: 0px 60px;
+}
+#password{
+    font-size: 15px;
+    font-weight: bolder;
+    color: black;
+}
+.input{
+    height: 25px;
+    width: 250px;
+}
+#save{
+    margin: 0px 15px;
+}
+#save button{
+    height: 25px;
+    width: 250px;
+}
+#exit-profile button{
+    height: 25px;
+    width: 250px;
+    background-color: black;
+    color: white;
+}
+.titles{
+    margin: 15px;
+    font-size: 25px;
+    color: white;
+    display: grid;
+}

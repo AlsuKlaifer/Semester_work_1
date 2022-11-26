@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+
+@media (min-width: 801px) {
+    #about a{
+        float:left;
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 800px) {
+    header #about a{
+        margin-top: 15px;
+        margin-left: 10px;
+        font-size: 11px;
+    }
+}
+
+main .section{
+    margin-top: 110px;
+    text-align: center;
+}
+main .section img{
+    text-align: center;
+    width: 80%;
+}
+
+main .section span{
+    display:inline-block;
+}
+
+.img-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.back-img {
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 500px;
+    width: 500px;
+    aspect-ratio: 3/2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px;
+}
+
+#beauty-img{
+    background-image: url("../images/beauty.png");
+}
+
+#fashion-img{
+    background-image: url("../images/runway.png");
+}
+
+#outfits-img{
+    background-image: url("../images/outfits.jpg");
+}
+
+#designers-img{
+    background-image: url("../images/designers.jpg");
+}
+.picture-text{
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+    font-size: 40px;
+    opacity: 0.5;
+    text-decoration: none;
+}
+.picture-text{
+    position: absolute;
+}

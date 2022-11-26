@@ -1,0 +1,19 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+main .btn {
+    text-align: center;
+    margin: 110px 0 50px 0;
+}
+main .btn a{
+    font-size: 20px;
+    border-color: rgba(0, 0, 0, 0.706);
+    background-color: white;
+    padding: 7px 15px;
+    border-style: double;
+    text-decoration: none;
+    border-radius: 5px;
+    color: rgba(0, 0, 0, 0.645);
+}

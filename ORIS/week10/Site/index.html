@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/header.css">
+    <title>Arizona</title>
+</head>
+<body>
+    <header>
+        <div id="about">
+            <a href="runway.html" title="Fashion" onclick="slowScroll('#main')">Fashion</a>
+            <a href="beauty.html" title="Beauty" onclick="slowScroll('#beauty')">Beauty</a>
+            <a href="outfits.html" title="Outfits" onclick="slowScroll('#outfits')">Outfits</a>
+            <a href="designers.html" title="Designers" onclick="slowScroll('#designers')">Designers</a>
+        </div>
+        <div id="logo">
+            <a href="index.html">ARIZONA</a>
+        </div>
+        <div id="signin" {{ isAuth }}>
+            <a href="sign_in.html">Sign in</a>
+            <a href="login.html">Login</a>
+        </div>
+    </header>
+    <main>
+        <div class="section">
+            <div class="img-container">
+                <a href="/beauty.html" id="beauty-img" class ="back-img">
+                    <div class = "picture-text">beauty</div>
+                </a>
+                <a href="/fashion.html" id="fashion-img"  class ="back-img">
+                    <div class = "picture-text">fashion</div>
+                </a>
+            </div>
+            <div class="img-container">
+                <a href="/outfits.html" id="outfits-img"  class ="back-img">
+                    <div class = "picture-text">outfits</div>
+                </a>
+                <a href="/designers.html" id="designers-img" class ="back-img">
+                    <div class = "picture-text">designers</div>
+                </a>
+            </div>
+        </div>  
+    </main>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script>
+        function slowScroll(id) {
+            $('body').animate({
+                scrollTop: $(id).offset().top
+            }, 500);
+        }
+    </script>
+</body>
+</html>

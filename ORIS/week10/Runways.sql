@@ -1,0 +1,11 @@
+﻿CREATE TABLE Runways
+(
+	[Id] INT IDENTITY (1, 1) NOT NULL,
+    [ModelName] VARCHAR (100) NOT NULL,
+    [Country] VARCHAR (100) NOT NULL,
+    [Brand] VARCHAR (100) NOT NULL,
+    [Collection] VARCHAR (100) NOT NULL,
+    [Image] IMAGE NOT NULL,
+    [Date] DATETIME NOT NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+)

@@ -1,0 +1,15 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.login-form-container {
+    margin-top: 100px;
+    text-align: center;
+}
+.form-field{
+    padding: 5px;
+}
+.form-buttons{
+    padding: 10px;
+}

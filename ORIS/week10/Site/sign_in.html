@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/header.css">
+    <link rel="stylesheet" href="styles/sign_in.css">
+    <title>Sign in</title>
+</head>
+<body>
+    <header>
+        <div id="about">
+            <a href="runway.html" title="Fashion" onclick="slowScroll('#main')">Fashion</a>
+            <a href="beauty.html" title="Beauty" onclick="slowScroll('#beauty')">Beauty</a>
+            <a href="outfits.html" title="Outfits" onclick="slowScroll('#outfits')">Outfits</a>
+            <a href="designers.html" title="Designers" onclick="slowScroll('#designers')">Designers</a>
+        </div>
+        <div id="logo">
+            <a href="index.html">ARIZONA</a>
+        </div>
+        <div id="signin">
+<!--            <a href="sign_in.html">Sign in</a>-->
+            <a href="login.html">Login</a>
+        </div>
+    </header>
+    <main>
+        <div class="signin-form-container">
+            <h1 class="form-title">
+                Sign in
+            </h1>
+            <div class="form-fields">
+                <form action="users/postLogin" method="post" class="form-example">
+                    <div class="form-field">
+                        <input id="name" type="text" name="name" placeholder="Name">
+                    </div>
+                    <div class="form-field">
+                        <input id="phone" type="tel" name="phone" placeholder="Phone number">
+                    </div>
+                    <div class="form-field">
+                        <input id="login" type="email" name="login" placeholder="E-mail">
+                    </div>
+                    <div class="form-field">
+                        <input id="password" type="password" name="password" placeholder="Password">
+                    </div>
+                    <button type="submit" class="button">Sign in</button>
+                </form>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
