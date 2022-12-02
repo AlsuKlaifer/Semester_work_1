@@ -6,6 +6,8 @@ using ORIS.week10.Attributes;
 using Scriban;
 using Scriban.Runtime;
 using HttpMultipartParser;
+using System;
+using static Microsoft.AspNetCore.Hosting.Internal.HostingApplication;
 
 namespace ORIS.week10
 {
@@ -117,12 +119,17 @@ namespace ORIS.week10
 
                     if (buffer == null)
                     {
-                        response.Headers.Set("Content-Type", "text/plain");
+                        response.Redirect("/error.html");
+                        Stream output2 = response.OutputStream;
+                        output2.Close();
+                        return;
 
-                        response.StatusCode = (int)HttpStatusCode.NotFound;
-                        string err = "404 - not found";
+                        //response.Headers.Set("Content-Type", "text/plain");
 
-                        buffer = Encoding.UTF8.GetBytes(err);
+                        //response.StatusCode = (int)HttpStatusCode.NotFound;
+                        //string err = "404 - not found";
+
+                        //buffer = Encoding.UTF8.GetBytes(err);
                     }
                 }
             }
@@ -206,7 +213,7 @@ namespace ORIS.week10
             Console.WriteLine("Content (Encoded): " + request.ContentEncoding);
             Console.WriteLine("URL Segments: " + string.Join(", ", request.Url.Segments));
 
-            if (request.Url.Segments.Length < 2)
+            if (request.Url.Segments.Length < 3)
                 return false;
 
             string controllerName = request.Url.Segments[1].Replace("/", "");
@@ -299,7 +306,7 @@ namespace ORIS.week10
                 .ToArray();
 
             Console.WriteLine("MethodName: " + method.Name);
-            Console.WriteLine("MethodURI: " + methodURI);
+            Console.WriteLine("MethodURI: " + methodURI); 
             Console.WriteLine("QueryParams: " + queryParams);
 
             var ret = method.Invoke(Activator.CreateInstance(controller, new object[] { context }), queryParams);

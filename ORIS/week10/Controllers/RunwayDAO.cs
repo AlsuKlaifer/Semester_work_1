@@ -9,8 +9,8 @@ namespace ORIS.week10.Controllers
 {
     internal class RunwayDAO : IDAO<Runway>
     {
-        const string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ArizonaDB;Integrated Security=True";
-        MyORM orm = new MyORM(connectionString);
+        //const string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ArizonaDB;Integrated Security=True";
+        MyORM orm = new MyORM();
 
         public void Delete(Runway runway)
         {
@@ -32,20 +32,16 @@ namespace ORIS.week10.Controllers
             return orm.AddParameter("@id", id).ExecuteQuery<Runway>("SELECT * FROM dbo.Runways WHERE Id = @id").FirstOrDefault();
         }
 
-        public void Insert(Runway user)
+        public void Insert(Runway runway)
         {
-            orm.Insert<Runway>(user);
+            orm.Insert<Runway>(runway);
         }
-        public void Update(int id, string modelName, string country, string brand, string collection, string image)
+
+        public void Update(int id, string modelName, string country, string brand, string collection, string image, int authorId)
         {
-            orm.AddParameter("@id", id)
-                .AddParameter("@modelName", modelName)
-                .AddParameter("@country", country)
-                .AddParameter("@brand", brand)
-                .AddParameter("@collection", collection)
-                .AddParameter("@image", image)
-                .ExecuteNonQuery("UPDATE dbo.Runways SET ModelName = @modelName, Country = @country, " +
-                "Brand = @brand, Collection = @collection, Image = @image WHERE Id = @id");
+            Runway runway = new Runway(modelName, country, brand, collection, image, authorId);
+
+            orm.Update(id, runway);
         }
     }
 }

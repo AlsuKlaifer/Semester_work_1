@@ -8,10 +8,11 @@ namespace ORIS.week10
 {
     public class MyORM
     {
+        const string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ArizonaDB;Integrated Security=True";
         public IDbConnection connection = null;
         public IDbCommand command = null;
 
-        public MyORM(string connectionString)
+        public MyORM()
         {
             this.connection = new SqlConnection(connectionString);
             this.command = connection.CreateCommand();
@@ -30,7 +31,10 @@ namespace ORIS.week10
         {
             int noOfAffectedRows = 0;
 
-            using(connection)
+            //this.connection = new SqlConnection(connectionString);
+            //this.command = connection.CreateCommand();
+
+            using (connection)
             {
                 command.CommandText = query;
                 connection.Open();
@@ -91,7 +95,7 @@ namespace ORIS.week10
             {
                 PropertyInfo[] modelFields = model.GetType().GetProperties().Where(p => p.Name.Equals("Id")).ToArray();
                 List<string> parameters = modelFields.Select(x => $"@{x.Name}").ToList();
-                string sqlExpression = $"DELETE FROM dbo.{typeof(T).Name}s WHERE {string.Join(",",modelFields.Select(f => $"{f.Name}=@{f.Name}").ToList())}";
+                string sqlExpression = $"DELETE FROM dbo.{typeof(T).Name}s WHERE {string.Join(",", modelFields.Select(f => $"{f.Name}=@{f.Name}").ToList())}";
                 command.CommandText = sqlExpression;
                 Console.WriteLine(sqlExpression);
                 foreach (var field in modelFields)
@@ -104,13 +108,33 @@ namespace ORIS.week10
             }
         }
 
+        public void Update<T>(int id, T model)
+        {
+            using(connection)
+            {
+                PropertyInfo[] modelFields = model.GetType().GetProperties().Where(p => !p.Name.Equals("Id")).ToArray();
+                List<string> parameters = modelFields.Select(x => $"@{x.Name}").ToList();
+                string sqlExpression = $"UPDATE dbo.{typeof(T).Name}s SET {string.Join(",", modelFields.Select(f => $"{f.Name}=@{f.Name}").ToList())} WHERE Id = @id";
+                command.CommandText = sqlExpression;
+                Console.WriteLine(sqlExpression);
+                foreach (var field in modelFields)
+                {
+                    command.Parameters.Add(new SqlParameter($"@{field.Name}", field.GetValue(model)));
+                }
+                command.Parameters.Add(new SqlParameter("@id", id));
+
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
+        }
+
         public IEnumerable<T> ExecuteQuery<T>(string query)
         {
             IList<T> list = new List<T>();
             Type t = typeof(T);
 
-            using (connection)
-            {
+            //using (connection)
+            //{
                 command.CommandText = query;
 
                 connection.Open();
@@ -126,13 +150,18 @@ namespace ORIS.week10
 
                     list.Add(obj);
                 }
-            }
+            //}
+
+            connection.Close();
+            command.Parameters.Clear();
+            //this.connection.ConnectionString = connectionString;
+
             return list;
         }
         public T ExecuteScalar<T>(string query)
         {
             T result = default(T);
-            using(connection)
+            using (connection)
             {
                 command.CommandText = query;
                 connection.Open();

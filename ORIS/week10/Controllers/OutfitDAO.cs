@@ -9,8 +9,8 @@ namespace ORIS.week10.Controllers
 {
     internal class OutfitDAO : IDAO<Outfit>
     {
-        const string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ArizonaDB;Integrated Security=True";
-        MyORM orm = new MyORM(connectionString);
+        //const string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ArizonaDB;Integrated Security=True";
+        MyORM orm = new MyORM();
 
         public void Delete(Outfit outfit)
         {
@@ -35,6 +35,13 @@ namespace ORIS.week10.Controllers
         public void Insert(Outfit outfit)
         {
             orm.Insert<Outfit>(outfit);
+        }
+        
+        public void Update(int id, string season, string style, string image, int authorId)
+        {
+            Outfit outfit = new Outfit(season, style, image, authorId);
+
+            orm.Update(id, outfit);
         }
     }
 }

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/header.css">
+    <link rel="stylesheet" href="styles/new_post.css">
+    <title>Update runway post</title>
+</head>
+<body>
+    <header>
+        <div id="about">
+            <a href="runway.html" title="Fashion">Fashion</a>
+            <a href="beauty.html" title="Beauty">Beauty</a>
+            <a href="outfits.html" title="Outfits">Outfits</a>
+            <a href="designers.html" title="Designers">Designers</a>
+        </div>
+        <div id="logo">
+            <a href="index.html">ARIZONA</a>
+        </div>
+        <div id="signin" {{ isAuth }}>
+            <a href="sign_in.html">Sign in</a>
+            <a href="login.html">Login</a>
+        </div>
+        <div id="profile" {{ isNotAuth }}>
+            <a href="profile.html" class="profile-img">Prof</a>
+        </div>
+    </header>
+    <main>
+        <div class="new-post-beauty-form-container">
+            <h1 class="form-title">
+                Update post from designers
+            </h1>
+            <div class="form-fields">
+                <form action="/designers/updatePost" method="post" enctype="multipart/form-data" class="form-example">
+                    <input type="text" hidden="hidden" id="mytext" value="id" name="id">
+                    <div class="form-field">
+                        <input id="name" type="text" placeholder="Name" name="name" required>
+                    </div>
+                    <div class="form-field">
+                        <input id="country" name="country" type="text" placeholder="Country" required>
+                    </div>
+                    <div class="form-field">
+                        <input id="brand" name="brand" type="text" placeholder="Brand" required>
+                    </div>
+                    <div class="form-field">
+                        <input type="file" name="image" accept="image/jpeg,image/png" required>
+                    </div>
+                    <button class="button">Publish</button>
+                </form>
+            </div>
+        </div>
+    </main>
+    <script>
+        var url = new URL(window.location.href);
+        var id = url.searchParams.get("id");
+        document.getElementById("mytext").value = id;
+    </script>
+</body>
+</html>

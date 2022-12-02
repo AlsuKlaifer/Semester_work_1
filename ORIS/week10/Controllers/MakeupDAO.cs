@@ -1,16 +1,11 @@
 ﻿using ORIS.week10.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ORIS.week10.Controllers
 {
     internal class MakeupDAO : IDAO<Makeup>
     {
-        const string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ArizonaDB;Integrated Security=True";
-        MyORM orm = new MyORM(connectionString);
+        //const string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ArizonaDB;Integrated Security=True";
+        MyORM orm = new MyORM();
 
         public void Delete(Makeup makeup)
         {
@@ -24,17 +19,23 @@ namespace ORIS.week10.Controllers
 
         public List<Makeup> GetPosts(int count)
         {
-            return orm.ExecuteQuery<Makeup>("SELECT * FROM dbo.Designers LIMIT " + count).ToList();
+            return orm.ExecuteQuery<Makeup>("SELECT * FROM dbo.Makeups LIMIT " + count).ToList();
         }
 
         public Makeup GetById(int id)
         {
-            return orm.AddParameter("@id", id).ExecuteQuery<Makeup>("SELECT * FROM dbo.Designers WHERE Id = @id").FirstOrDefault();
+            return orm.AddParameter("@id", id).ExecuteQuery<Makeup>("SELECT * FROM dbo.Makeups WHERE Id = @id").FirstOrDefault();
         }
 
         public void Insert(Makeup makeup)
         {
             orm.Insert<Makeup>(makeup);
+        }
+        public void Update(int id, string category, string description, string image, int authorId)
+        {
+            Makeup makeup = new Makeup(category, description, image, authorId);
+
+            orm.Update(id, makeup);
         }
     }
 }

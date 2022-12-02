@@ -1,0 +1,35 @@
+<div id="information">
+    Your profile
+    <div id ="name" class="title">
+        {{ name }}
+    </div>
+    <div id="login" class="title">
+        {{ login }}
+    </div>
+    <div id="number" class="title">
+        {{ number }}
+    </div>
+    <form action="users/updatePassword" method="post">
+        <div id="password" class="titles">
+            You can update your password:
+        </div>
+        <div class="titles" id="input">
+            <input type="password" class="input" id="password" name="password">
+        </div>
+        <div class="titles" id="save">
+            <button>
+                Save
+            </button>
+        </div>
+    </form>
+    <form action="users/exit" method="post" id="exit-profile">
+        <button id="save" name="exit">
+            Exit
+        </button>
+    </form>
+    <form action="users/delete" method="post" id="exit-profile">
+        <button id="save" name="exit">
+            Delete profile
+        </button>
+    </form>
+</div>

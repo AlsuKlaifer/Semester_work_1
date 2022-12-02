@@ -69,11 +69,11 @@ namespace ORIS.week10.Controllers
             Regex phoneRegex = new Regex(@"^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$");
             MatchCollection matches = phoneRegex.Matches(number);
 
-            Regex loginRegex = new Regex(@"^(.+)@(\ S+)$");
+            Regex loginRegex = new Regex(@"^(.+)@(\ S+)$"); //([a - zA - Z0 - 9._ -] +@[a-zA - Z0 - 9._ -]+\.[a-zA - Z0 - 9_ -]+)
             MatchCollection matches2 = loginRegex.Matches(login);
 
-            if ((matches.Count > 0 && number.Length == matches[0].Length)
-                && (matches2.Count > 0 && matches2[0].Length == login.Length))
+            if ((matches.Count > 0 && number.Length == matches[0].Length))
+                //&& (matches2.Count > 0 && matches2[0].Length == login.Length))
             {
                 var hashPassword = HashPassword(password);
                 var account = new User(name, number, login, hashPassword);
@@ -85,14 +85,17 @@ namespace ORIS.week10.Controllers
         }
 
         [HttpPOST("postLogin")]
-        public bool PostLogin(string login, string password)
+        public bool PostLogin(string login, string password, string check)
         {
+            
             var user = userDAO.GetByLogin(login);
             if(user != null && VerifyHashedPassword(user.Password, password))
             {
+                DateTime date = check.Equals("on") ? DateTime.Now.AddMonths(1) : DateTime.Now.AddDays(1);
+
                 _httpContent.Response.Headers.Add("Set-Cookie",
                     nameof(SessionId) + "=" + JsonSerializer.Serialize(new SessionId(true, user.Id), typeof(SessionId)) + "; " +
-                    "expires=" + DateTime.Now.AddMonths(1).ToString("dddd, dd-MM-yyyy hh:mm:ss GMT") + "; " +
+                    "expires=" + date.ToString("dddd, dd-MM-yyyy hh:mm:ss GMT") + "; " +
                     "path=/");
 
                 _httpContent.Response.Redirect("/");

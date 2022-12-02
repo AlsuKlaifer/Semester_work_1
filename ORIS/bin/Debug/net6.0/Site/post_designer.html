@@ -1,0 +1,31 @@
+<div class="img-container">
+    <article>
+        <div class="changes">
+            <div class="change-container">
+                <a href="update_designer_post.html?id={{ id }}" class="change" name="change">Change</a>
+            </div>
+            <form action="/designers/deletePost" method="post" class="change-container">
+                <input type="text" hidden="hidden" id="mytext" value="{{ id }}" name="id">
+                <button class="delete" id="delete" name="delete">✕</button>
+            </form>
+        </div>
+        <div class="picture-container">
+            <img src="data:image/png;base64, {{ image }}" alt="Image" class="picture"/>
+        </div>
+        <div class="descrip">
+            <h3 class="name-title">
+                {{ name }}
+            </h3>
+            <div class="tags">
+                <div class="brand-collection">
+                    {{ country }}
+                    /
+                    {{ brand }}
+                </div>
+            </div>
+            <div class="author-title">
+                Posted by {{ author }}
+            </div>
+        </div>
+    </article>
+</div>

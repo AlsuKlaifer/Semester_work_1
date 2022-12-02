@@ -1,12 +1,7 @@
-﻿using System.Data.SqlClient;
-using ORIS.week10.Attributes;
+﻿using ORIS.week10.Attributes;
 using System.Net;
-using System.Net.Http.Headers;
-using System.Collections.Specialized;
 using System.Text.Json;
 using Scriban;
-using System.Diagnostics.Metrics;
-using System.Xml.Linq;
 using Scriban.Runtime;
 using System.Text;
 
@@ -17,36 +12,9 @@ namespace ORIS.week10.Controllers
     {
         OutfitDAO outfitDAO = new OutfitDAO();
         HttpListenerContext _httpContent;
-
         public Outfits(HttpListenerContext httpContent)
         {
             _httpContent = httpContent;
-        }
-
-        [HttpGET("getById")]
-        public Outfit GetOutfitById(int id)
-        {
-            return outfitDAO.GetById(id);
-        }
-
-        [HttpGET("getList")]
-        public HttpResponseMessage GetOutfits()
-        {
-            if(_httpContent.Request.Cookies["SessionId_IsAuthorize"] == null)
-                return new HttpResponseMessage(HttpStatusCode.Unauthorized);
-
-            string cookie_IsAuthorize = _httpContent.Request.Cookies["SessionId_IsAuthorize"].Value;
-            string cookie_Id = _httpContent.Request.Cookies["SessionId_Id"].Value;
-            if (bool.Parse(cookie_IsAuthorize))
-            {
-                HttpResponseMessage responseMessage = new HttpResponseMessage(HttpStatusCode.OK);
-                responseMessage.Content = new StringContent(String.Join(", ", outfitDAO.GetAll()));
-                return responseMessage;
-            }
-            else
-            {
-                return new HttpResponseMessage(HttpStatusCode.Unauthorized);
-            }
         }
 
         [HttpPOST("createPost")]
@@ -78,9 +46,10 @@ namespace ORIS.week10.Controllers
         {
             List<Outfit> posts = outfitDAO.GetAll();
 
-            var data = File.ReadAllText("./Site/post.html");
+            var data = File.ReadAllText("./Site/post_outfit.html");
             StringBuilder sb = new StringBuilder();
 
+            sb.Append("<div style=\"display: flex;flex-direction: row;flex-wrap: wrap;justify-content: center;\">");
             for (int i = 0; i < posts.Count; i++)
             {
                 Outfit d = posts[i];
@@ -88,9 +57,13 @@ namespace ORIS.week10.Controllers
                 var tpl = Template.Parse(data);
 
                 var scriptObject = new ScriptObject();
+                scriptObject.Add("id", d.Id);
                 scriptObject.Add("season", d.Season);
                 scriptObject.Add("style", d.Style);
                 scriptObject.Add("image", d.Image);
+
+                UserDAO userDAO = new UserDAO();
+                scriptObject.Add("author", userDAO.GetById(d.Author).Name);
 
                 var context = new TemplateContext();
                 context.PushGlobal(scriptObject);
@@ -98,9 +71,66 @@ namespace ORIS.week10.Controllers
                 var res = tpl.Render(context);
 
                 sb.Append(res);
+                if (i % 3 == 2)
+                    sb.Append("</div><div style=\"display: flex;flex-direction: row;flex-wrap: wrap;justify-content: center;\">");
+            }
+            sb.Append("</div>");
+            
+            return sb.ToString();
+        }
+
+        [HttpPOST("updatePost")]
+        public void UpdatePost(int id, string season, string style, string image)
+        {
+            SessionId sessionId = null;
+            string[] cookies = _httpContent.Request.Headers.Get("Cookie").Split("; ");
+            foreach (string c in cookies)
+            {
+                string[] splitted = c.Split("=");
+                if (splitted[0].Equals(nameof(SessionId)))
+                {
+                    sessionId = JsonSerializer.Deserialize<SessionId>(splitted[1]);
+                    break;
+                }
+            }
+            
+            if (sessionId != null)
+            {
+                Outfit outfit = outfitDAO.GetById(id);
+                if (outfit.Author == sessionId.Id)
+                {
+                    outfitDAO.Update(id, season, style, image, outfit.Author);
+                    _httpContent.Response.Redirect("/outfits.html");
+                    return;
+                }
             }
 
-            return sb.ToString();
+            _httpContent.Response.Redirect("/outfits.html?wrongAuthor=true");
+        }
+
+        [HttpPOST("deletePost")]
+        public void DeletePost(int id)
+        {
+            SessionId sessionId = null;
+            string[] cookies = _httpContent.Request.Headers.Get("Cookie").Split("; ");
+            foreach (string c in cookies)
+            {
+                string[] splitted = c.Split("=");
+                if (splitted[0].Equals(nameof(SessionId)))
+                {
+                    sessionId = JsonSerializer.Deserialize<SessionId>(splitted[1]);
+                    break;
+                }
+            }
+
+            Outfit outfit = outfitDAO.GetById(id);
+            if (outfit.Author == sessionId.Id)
+            {
+                outfitDAO.Delete(outfit);
+                _httpContent.Response.Redirect("/outfits.html");
+                return;
+            }
+            _httpContent.Response.Redirect("/outfits.html?wrongAuthor=true");
         }
     }
 
@@ -111,7 +141,7 @@ namespace ORIS.week10.Controllers
         public string Style { get; set; }
         public string Image { get; set; }
         public DateTime Date { get; set; }
-        public string Author { get; set; }
+        public int Author { get; set; }
 
         public Outfit(string season, string style, string image, int authorId)
         {
@@ -119,8 +149,7 @@ namespace ORIS.week10.Controllers
             Style = style;
             Image = image;
             Date = DateTime.Now;
-            UserDAO userDAO = new UserDAO();
-            Author = userDAO.GetById(authorId).Name;
+            Author = authorId;
         }
 
         public Outfit() { }

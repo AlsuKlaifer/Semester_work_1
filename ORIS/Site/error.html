@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/header.css">
+    <title>Profile</title>
+</head>
+<body>
+    <header>
+        <div id="about">
+            <a href="runway.html" title="Fashion">Fashion</a>
+            <a href="beauty.html" title="Beauty">Beauty</a>
+            <a href="outfits.html" title="Outfits">Outfits</a>
+            <a href="designers.html" title="Designers">Designers</a>
+        </div>
+        <div id="logo">
+            <a href="index.html">ARIZONA</a>
+        </div>
+        <div id="profile" {{ isNotAuth }}>
+            <a href="profile.html" class="profile-img">Prof</a>
+        </div>
+    </header>
+    <main>
+        <div class="section">
+            <img src="images/error.jpg" alt="" class="background">
+        </div>
+    </main>
+</body>
+</html>
+
+<style>
+    *{
+        overflow: hidden;
+    }
+    .section{
+        opacity: 0.6;
+        background-repeat: no-repeat;
+        background-size: 100%;
+        margin-top: 80px;
+    }
+    .background{
+        width: 100%;
+        height: 100%;
+    }
+</style>

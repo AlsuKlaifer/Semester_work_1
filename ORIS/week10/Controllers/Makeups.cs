@@ -7,7 +7,7 @@ using System.Text.Json;
 
 namespace ORIS.week10.Controllers
 {
-    [HttpController("makeup")]
+    [HttpController("makeups")]
     internal class Makeups
     {
         MakeupDAO makeupDAO = new MakeupDAO();
@@ -50,22 +50,16 @@ namespace ORIS.week10.Controllers
             var data = File.ReadAllText("./Site/post_beauty.html");
             StringBuilder sb = new StringBuilder();
 
+            sb.Append("<div style=\"display: flex;flex-direction: row;flex-wrap: wrap;justify-content: center;\">");
+
             for (int i = 0; i < posts.Count; i++)
             {
-                int col = i / 3 + 1;
-                int raw = i % 3 + 1;
-
-                if (i % 3 == 0)
-                    sb.Append("<div style=\"width: 1200px; margin: 0 auto; display: block;\">");
-
-                if (col > 1 && i % 3 == 2)
-                    sb.Append("</div><div style=\"width: 1200px; margin: 0 auto; display: block;\">");
-
                 Makeup d = posts[i];
 
                 var tpl = Template.Parse(data);
 
                 var scriptObject = new ScriptObject();
+                scriptObject.Add("id", d.Id);
                 scriptObject.Add("category", d.Category);
                 scriptObject.Add("description", d.Description);
                 scriptObject.Add("image", d.Image);
@@ -78,11 +72,65 @@ namespace ORIS.week10.Controllers
 
                 var res = tpl.Render(context);
 
-                sb.Append(res);
+                sb.Append(res); if (i % 3 == 2)
+                    sb.Append("</div><div style=\"display: flex;flex-direction: row;flex-wrap: wrap;justify-content: center;\">");
             }
             sb.Append("</div>");
 
             return sb.ToString();
+        }
+        [HttpPOST("updatePost")]
+        public void UpdatePost(int id, string category, string description, string image)
+        {
+            SessionId sessionId = null;
+            string[] cookies = _httpContent.Request.Headers.Get("Cookie").Split("; ");
+            foreach (string c in cookies)
+            {
+                string[] splitted = c.Split("=");
+                if (splitted[0].Equals(nameof(SessionId)))
+                {
+                    sessionId = JsonSerializer.Deserialize<SessionId>(splitted[1]);
+                    break;
+                }
+            }
+
+            if (sessionId != null)
+            {
+                Makeup makeup = makeupDAO.GetById(id);
+                if (makeup.Author == sessionId.Id)
+                {
+                    makeupDAO.Update(id, category, description, image, makeup.Author);
+                    _httpContent.Response.Redirect("/beauty.html");
+                    return;
+                }
+            }
+
+            _httpContent.Response.Redirect("/beauty.html?wrongAuthor=true");
+        }
+
+        [HttpPOST("deletePost")]
+        public void DeletePost(int id)
+        {
+            SessionId sessionId = null;
+            string[] cookies = _httpContent.Request.Headers.Get("Cookie").Split("; ");
+            foreach (string c in cookies)
+            {
+                string[] splitted = c.Split("=");
+                if (splitted[0].Equals(nameof(SessionId)))
+                {
+                    sessionId = JsonSerializer.Deserialize<SessionId>(splitted[1]);
+                    break;
+                }
+            }
+
+            Makeup makeup = makeupDAO.GetById(id);
+            if (makeup.Author == sessionId.Id)
+            {
+                makeupDAO.Delete(makeup);
+                _httpContent.Response.Redirect("/beauty.html");
+                return;
+            }
+            _httpContent.Response.Redirect("/beauty.html?wrongAuthor=true");
         }
     }
 

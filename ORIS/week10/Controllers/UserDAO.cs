@@ -5,8 +5,8 @@ namespace ORIS.week10.Controllers
 {
     public class UserDAO : IDAO<User>
     {
-        const string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ArizonaDB;Integrated Security=True";
-        MyORM orm = new MyORM(connectionString);
+        //const string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ArizonaDB;Integrated Security=True";
+        MyORM orm = new MyORM();
 
         public void Delete(User user)
         {
